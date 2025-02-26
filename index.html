@@ -133,7 +133,7 @@
       <div class="container section-title" data-aos="fade-up">
         <span>Data Collection & Labeling<br></span>
         <h2>Data Collection & Labeling</h2>
-        <p>Since we are classifying EV chargers, we must gather charger data in order to train our models.</p>
+        <p>The dataset for training the fault classification model consists of images of EV chargers collected from both manual and online sources, ensuring diverse conditions to improve model generalization. Manual collection involved capturing chargers in various operational states—healthy, broken screen, damaged cord or damaged plug—from different angles, with a focus on front-facing perspectives to better simulate future user photos. Charger locations were identified using PlugShare, prioritizing stations reported as faulty or undergoing maintenance to maximize the presence of malfunctioning units. To further expand the dataset, additional images were sourced online from Google Photos, Reddit, EV forums, and blog posts where users discussed charger failures. These sources provided real-world failure cases, increasing dataset diversity. All online images were manually reviewed to ensure relevance and consistency with manually collected samples.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -212,7 +212,8 @@
       <div class="container section-title" data-aos="fade-up">
         <span>Methodology</span>
         <h2>Methodology</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>We first utilizes NVIDIA’s MiT-B0, a transformer for semantic segmentation. The training data is prepared using Segment.ai, a web-based tool that enables precise pixel-level annotation. Each pixel is classified into one of five categories—Background, Body, Plug, Screen, and Cables. The model outputs a pixel-wise segmentation mask, which helps isolate key charger components before the fault detection stage. <br>
+          In the fault detection stage, we train a CNN-based image classification model on the isolated components to predict whether they are faulty……..Once trained, the classifier integrates with the segmentation model, enabling real-time fault detection and automated flagging for maintenance.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
