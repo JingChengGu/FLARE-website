@@ -100,7 +100,7 @@
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-exclamation-triangle"></i></div>
               <h4>Problem</a></h4>
-              <p>Broken EV chargers make charging unreliable for EV owners.</p>
+              <p>Broken EV chargers (both external and internal issues) make charging unreliable for EV owners and slows down EV adoption.</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -108,7 +108,7 @@
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
               <h4>Solution</a></h4>
-              <p>AI-driven fault detection using image senmatic segmentation and binary classifier.</p>
+              <p>AI-driven fault detection using semantic segmentation and binary classifier to speed up the repair process.</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -116,7 +116,7 @@
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-graph-up-arrow"></i></div>
               <h4>Goal</a></h4>
-              <p>Increase charger reliability and accelerate EV adoption. </p>
+              <p>Increases EV charger reliability, strengthens charging infrastructure, and accelerates EV adoption.</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -136,41 +136,60 @@
         <p>The dataset for training the fault classification model consists of images of EV chargers collected from both manual and online sources, ensuring diverse conditions to improve model generalization. Manual collection involved capturing chargers in various operational states—healthy, broken screen, damaged cord or damaged plug—from different angles, with a focus on front-facing perspectives to better simulate future user photos. Charger locations were identified using PlugShare, prioritizing stations reported as faulty or undergoing maintenance to maximize the presence of malfunctioning units. To further expand the dataset, additional images were sourced online from Google Photos, Reddit, EV forums, and blog posts where users discussed charger failures. These sources provided real-world failure cases, increasing dataset diversity. All online images were manually reviewed to ensure relevance and consistency with manually collected samples.</p>
       </div><!-- End Section Title -->
 
-      
-      <div style="text-align: center;">
-        <p>Below is an example of our segments.ai data labeling process:</p>
-        <img src="assets/img/gound_truth.png" class="img-fluid" alt="">
-      </div>
 
       <div class="container">
 
         <div class="row gy-4">
-          <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-8 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
             <video class="img-fluid" autoplay loop muted playsinline>
                 <source src="assets/img/Segments_ai_demo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>        
-          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+          <div class="col-lg-4 content" data-aos="fade-up" data-aos-delay="200">
+            <h3>Segments.ai Labeling Process</h3>
+            <p>
+              Using the website, members manually labeled different parts of the chargers into:
             </p>
             <ul>
-              <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Screen</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Body</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Cord</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Plug</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Void Background</span></li>
             </ul>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+              After labeling a sizeable amount of charger images, we used these labeled ground truth images to train our segmentation model & binary classification model.
             </p>
           </div>
         </div>
 
       </div>
 
+    
+    <div style="text-align: center; margin-top: 50px;">
+      <p>Below is an example of our segments.ai data labeling process:</p>
+      <div class="row">
+          <!-- First Image -->
+          <div class="col-lg-4">
+              <img src="assets/img/ground_truth_1.png" class="img-fluid" alt="Original Image">
+              <p>Original Image</p>
+          </div>
+  
+          <!-- Second Image -->
+          <div class="col-lg-4">
+              <img src="assets/img/ground_truth_2.png" class="img-fluid" alt="Labeled Image">
+              <p>Ground Truth Label</p>
+          </div>
+  
+          <!-- Third Image -->
+          <div class="col-lg-4">
+              <img src="assets/img/ground_truth_3.png" class="img-fluid" alt="Overlay Image">
+              <p>Overlay Image</p>
+          </div>
+        </div>
+    </div>
+  
     </section><!-- /About Section -->
 
     <!-- Stats Section -->
