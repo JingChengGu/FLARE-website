@@ -241,14 +241,28 @@
       <div class="container section-title" data-aos="fade-up">
         <span>Methodology</span>
         <h2>Methodology</h2>
-        <p>We first utilizes NVIDIA’s MiT-B0, a transformer for semantic segmentation. The training data is prepared using Segment.ai, a web-based tool that enables precise pixel-level annotation. Each pixel is classified into one of five categories—Background, Body, Plug, Screen, and Cables. The model outputs a pixel-wise segmentation mask, which helps isolate key charger components before the fault detection stage. <br>
-          In the fault detection stage, we train a CNN-based image classification model on the isolated components to predict whether they are faulty……..Once trained, the classifier integrates with the segmentation model, enabling real-time fault detection and automated flagging for maintenance.</p>
+        <p>We first utilizes NVIDIA’s MiT-B0, a transformer for semantic segmentation. The training data is prepared using Segments.ai, a web-based tool that enables precise pixel-level annotation. Each pixel is classified into one of five categories — Background, Body, Plug, Screen, and Cables. The model outputs a pixel-wise segmentation mask, which helps isolate key charger components before the fault detection stage. <br>
+          
+          In the fault detection stage, we train a CNN-based image classification model on the isolated components to predict whether they are faulty. Once trained, the classifier integrates with the segmentation model, enabling real-time fault detection and automated flagging for maintenance.</p>
       </div><!-- End Section Title -->
 
       <div style="text-align: center;">
         <p>FLARE product flowchart:</p>
-          <img src="assets/img/FLARE_flowchart.png" class="img-fluid" alt="" style="width: 30%; height: auto;"></div>
+          <img src="assets/img/FLARE_flowchart.png" class="img-fluid" alt="" style="width: 25%; height: auto;"></div>
     
+      <div style="text-align: center; margin-top: 50px;">
+        <h3>Semantic Segmentation:</h3>
+        <p>A predictive result output from our custom segmentation model:</p>
+          <img src="assets/img/initial_seg.png" class="img-fluid" alt="" style="width: 20%; height: auto;">
+          <p> 
+            Completed 50 epochs of training, 3550 steps. <br>
+            Model achieved ~82.8% mean accuracy across classes, 90.9% overall accuracy, and mean IoU of 0.7481 across classes after fine-tuning.
+            </p>
+      </div>
+
+      <div style="text-align: center; margin-top: 50px;">
+        <h3>Binary Classification:</h3>
+      </div>
 
     </section><!-- /Services Section -->
 
@@ -368,7 +382,7 @@
       <div class="container section-title" data-aos="fade-up">
         <span>Mentors</span>
         <h2>Mentors</h2>
-        <p>Below are our wonderful mentors that guided us through the building process!</p>
+        <p>Below are our wonderful mentors who guided us through the FLARE building process!</p>
       </div><!-- End Section Title -->
 
       <div class="container">
