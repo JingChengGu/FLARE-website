@@ -236,27 +236,41 @@
           
           In the fault detection stage, we train a CNN-based image classification model on the isolated components to predict whether they are faulty. Once trained, the classifier integrates with the segmentation model, enabling real-time fault detection and automated flagging for maintenance.</p>
       </div><!-- End Section Title -->
-
-      <div style="text-align: center;">
-        <p>FLARE product flowchart:</p>
-          <img src="assets/img/FLARE_flowchart.png" class="img-fluid" alt="" style="width: 25%; height: auto;"></div>
     
-      <div style="text-align: center; margin-top: 50px;">
+      <div style="text-align: center; margin-top: 20px;">
         <h3>Semantic Segmentation:</h3>
         <p>A predictive result output from our custom segmentation model:</p>
           <img src="assets/img/initial_seg.png" class="img-fluid" alt="" style="width: 20%; height: auto;">
-          <p> 
-            Completed 50 epochs of training, 3550 steps. <br>
-            Model achieved ~82.8% mean accuracy across classes, 90.9% overall accuracy, and mean IoU of 0.7481 across classes after fine-tuning.
-            </p>
+          
+          <button onclick="toggleDropdown('semantic-details')" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; background-color: #f8f9fa; cursor: pointer; border-radius: 5px;">
+            Learn More
+        </button>
+    
+          <div id="semantic-details" style="display: none; margin-top: 10px;">
+              <p>Completed 50 epochs of training, 3550 steps. <br>
+                  Model achieved ~82.8% mean accuracy across classes, 90.9% overall accuracy, and mean IoU of 0.7481 across classes after fine-tuning.
+              </p>
+          </div>
       </div>
 
       <div style="text-align: center; margin-top: 50px;">
         <h3>Binary Classification:</h3>
       </div>
 
+      <script>
+        function toggleDropdown(id) {
+            var element = document.getElementById(id);
+            if (element.style.display === "none") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+        </script>
+        
     </section><!-- /Services Section -->
 
+    
     <!-- Services Section -->
     <section id="results" class="services section light-background">
 
@@ -278,19 +292,30 @@
       <div class="container section-title" data-aos="fade-up">
         <span>Prototype</span>
         <h2>Prototype</h2>
-        <p>Explore our interactive app prototype built with Figma below:</p>
+        <p>Explore our interactive app prototype and product flowchart below:</p>
       </div><!-- End Section Title -->
-
-      <div style="width:100%; display:flex; justify-content:center;">
-        <iframe 
-          style="border: 1px solid rgba(0, 0, 0, 0.1); border-radius:8px;"
-          width="450" 
-          height="800" 
-          src="https://embed.figma.com/proto/DGradUDKqOhUwV12mQujfb/FLARES-App?node-id=10-373&p=f&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=10%3A373&embed-host=share" 
-          allowfullscreen>
-        </iframe>
-      </div>
-
+      <div class="container">
+        <div class="row align-items-center"> <!-- Ensures proper vertical alignment -->
+            
+            <!-- Figma Prototype -->
+            <div class="col-lg-6 d-flex justify-content-center">
+                <iframe 
+                    style="border: 1px solid rgba(0, 0, 0, 0.1); border-radius:8px;"
+                    width="450" 
+                    height="800" 
+                    src="https://embed.figma.com/proto/DGradUDKqOhUwV12mQujfb/FLARES-App?node-id=10-373&p=f&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=10%3A373&embed-host=share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+    
+            <!-- Flowchart -->
+            <div class="col-lg-6 d-flex flex-column align-items-center text-center">
+                <p style="margin-bottom: 10px;">FLARE product flowchart:</p>
+                <img src="assets/img/FLARE_flowchart.png" class="img-fluid" alt="" style="width: 70%; height: auto;">
+            </div>
+    
+        </div>
+    </div>
     </section><!-- /Portfolio Section -->
 
 
