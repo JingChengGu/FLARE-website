@@ -249,11 +249,11 @@
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100" style = "text-align: left;">
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-segmented-nav"></i></div>
-              <h4>Semantic Segmentation</h4>
+              <h4>Step 1: Semantic Segmentation</h4>
               <p style="text-align: left;">We first segment the different parts of an EV charger—such as the screen, body, cable, and plug—before analyzing their condition.</p>
               <ul style="text-align: left;">
                 <li><b>How?</b> We first tested this technique on a sidewalk dataset before eventually upgrading to a more advanced segmentation model, <b>MIT-B3 SegFormer</b>, to our labeled EV charger dataset.</li>
-                <li><b>Why?</b> This helps us focus on specific parts rather than the whole charger, making the classification process easier and more accurate .</li>
+                <li><b>Why?</b> This helps us focus on specific parts rather than the whole charger, making the classification process easier and more accurate.</li>
               </ul>
             </div>
           </div><!-- End Service Item -->
@@ -261,7 +261,7 @@
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200" style = "text-align: left;">
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-vr"></i></div>
-              <h4>Binary Classification</a></h4>
+              <h4>Step 2: Binary Classification</a></h4>
               <p style="text-align: left;">Once the charger components are segmented, we train a model to classify whether each part is functioning correctly or broken.</p>
                 <ul style="text-align: left;">
                   <li><b>How?</b> We collected and labeled images of EV chargers as either "healthy" or "broken" (e.g., damaged screen, faulty plug, disconnected cable, and out of service chargers).</li>
@@ -313,6 +313,13 @@
               <p>
                 Recognizing the need for improved segmentation performance, we transitioned to leveraging more powerful compute resources. One of our team members gained access to an <b>NVIDIA A100 GPU</b>, which enabled us to experiment with more complex models in the SegFormer family. We systematically evaluated <b>MiT-B1 through MiT-B5</b>, analyzing their respective parameter sizes, training times, and segmentation accuracy. After extensive testing, we found that the <b>MiT-B3 SegFormer</b> model struck the best balance between computational efficiency and performance, significantly improving segmentation quality without incurring excessive inference costs.
               </p>
+              <div style = "text-align: center; margin-top: 30px;">
+                <img src = "assets/img/segformer_performance.png" class = "img-fluid" alt = "" style ="width: 40%; height:auto; align-items: center;">
+                <p style = "text-align: center; margin-top: 30px;"> The figure above showcases the performances of B0 to B5 models an exisiting dataset named ADE20K.<br>
+                  <a href="https://arxiv.org/abs/2105.05633" target="_blank">Link</a>
+                </p>
+                </div>
+
                 <h3 style = "margin-top: 50px;">Binary Classification: Model Training & Testing</h3>
               <p style = "margin-top: 30px;">
                 After segmenting charger components, we trained a <b>Vision Transformer (ViT)</b> model for fault classification. Using <b>vit-base-patch16-224-in21k</b>, we categorized images into two classes: <b>healthy</b> (label = 0) and <b>broken</b> (label = 1). Dataset preparation involved standardization to RGB format, renaming for consistency, and labeling stored in a <code>screen_metadata.csv</code> file.
@@ -340,9 +347,6 @@
             
         </div>
       </div>
-
-      
-
       <script>
         function toggleDropdown(id) {
             var element = document.getElementById(id);
@@ -357,43 +361,114 @@
     </section><!-- /Services Section -->
 
     
-    <!-- Services Section -->
-    <section id="results" class="services section light-background">
+<!-- Results Section -->
+<section id="results" class="results section light-background">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span>Results</span>
-        <h2>Results</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <span>Results</span>
+    <h2>Results & Impact</h2>
+    <p>
+      Our study demonstrated the effectiveness of artificial intelligence in automating EV charger fault detection. By using <b>computer vision models</b>, we successfully identified damaged chargers and categorized faults, enabling a more efficient and structured reporting system. This innovation improves <b>maintenance response times</b>, enhances <b>charger reliability</b>, and ultimately contributes to a more robust EV charging network.
+    </p>
+    <p style = "margin-top: 10px;">
+      Through rigorous testing, our <b>segmentation and classification models</b> accurately detected charger issues and performed well under diverse conditions. The results highlight the feasibility of integrating AI-powered fault detection into <b>real-world EV infrastructure</b>, reducing reliance on manual reporting and increasing accuracy in maintenance logs.
+    </p>
+    <div style="text-align: center; margin-top: 20px;">
+      <button onclick="toggleDropdown('detailed-results')" style="padding: 10px; border: 1px solid #ccc; background-color: #f8f9fa; cursor: pointer; border-radius: 5px;">
+        See Technical Findings
+      </button>
+    </div>
+  </div><!-- End Section Title -->
 
-      <div style="text-align: center; margin-top: 20px;">
-        <h3>Semantic Segmentation:</h3>
-        <p>A predictive result output from our custom segmentation model:</p>
-          <img src="assets/img/segformer_out.png" class="img-fluid" alt="" style="width: 60%; height: auto;">
-            <div style="margin-top: 20px;">
-              <button onclick="toggleDropdown('semantic-details')" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; background-color: #f8f9fa; cursor: pointer; border-radius: 5px;">
-                Learn More
-              </button>
-            </div>
-    
-          <div id="semantic-details" style="display: none; margin-top: 10px;">
-              <p>Completed 50 epochs of training, 3550 steps. <br>
-                  Model achieved ~82.8% mean accuracy across classes, 90.9% overall accuracy, and mean IoU of 0.7481 across classes after fine-tuning.
+  <!-- Detailed Results Section -->
+  <div id="detailed-results" style="display: none; margin-top: 10px;" class="container" data-aos="fade-up">
+    <section id="detailed-results-section" class="detailed-results-section section">
+      <div class="container">
+        <div class="row">
+          
+          <!-- Segmentation Results -->
+          <div class="col-lg-12" data-aos="fade-up">
+            <div class="detailed-section">
+              <h3>Segmentation Results</h3>
+              <p>
+                We tested different levels of NVIDIA’s MiT SegFormer models (MiT-B0 through MiT-B3) for <b>EV charger segmentation</b>. Our final <b>MiT-B3 model</b> achieved:
               </p>
+              <ul>
+                <li><b>Mean Accuracy:</b> 87.1% across all classes</li>
+                <li><b>Overall Accuracy:</b> 93.5%</li>
+                <li><b>Mean IoU:</b> 0.804</li>
+              </ul>
+              <p>
+                The model effectively distinguished between different charger components, despite challenges such as <b>low-light environments</b> and <b>background clutter</b>. However, segmentation accuracy can be further improved with <b>additional data augmentation</b> and <b>fine-tuning</b> on diverse datasets.
+              </p>
+            </div>
           </div>
-          <div id="semantic-details" style="display: none; margin-top: 10px;">
-            <img src = "assets/img/segformer_arch.png" class = "img-fluid" alt = "" style ="width: 60%; height:auto;">
+          <div style = "text-align: center; margin-top: 30px;">
+            <img src = "assets/img/segformer_out.png" class = "img-fluid" alt = "" style ="width: 60%; height:auto; align-items: center;">
+            <p style = "text-align: center; margin-top: 30px;"> The figure above showcases the performances of B0, B2, and B3 models.<br>
+            </p>
+            </div>
+          <!-- Classification Results -->
+          <div class="col-lg-12" data-aos="fade-up">
+            <div class="detailed-section">
+              <h3>Classification Results</h3>
+              <p>
+                We used <b>Vision Transformers (ViT)</b> to classify charger faults, training separate models for screen damage, plug condition, cable defects, and out-of-service status. Our models performed well, particularly in high-contrast images, achieving:
+              </p>
+              <ul>
+                <li><b>High confidence in distinguishing healthy vs. broken charger components.</b></li>
+                <li><b>Reliable performance in well-lit environments.</b></li>
+                <li><b>Challenges in subtle damage detection</b>, requiring additional labeled data.</li>
+              </ul>
+              <p>
+                This classification approach ensures <b>granular fault detection</b>, minimizing false positives and providing precise maintenance reports.
+              </p>
+            </div>
+          </div>
+          <div style = "text-align: center; margin-top: 30px;">
+            <img src = "assets/img/classification_results.png" class = "img-fluid" alt = "" style ="width: 60%; height:auto; align-items: center;">
+            <p style = "text-align: center; margin-top: 30px;"> The figure above showcases the performances of our classification models on different charger components.<br>
+            </p>
+            </div>
+          <!-- Discussion & Future Work -->
+          <div class="col-lg-12" data-aos="fade-up" style = "margin-top: 30px;">
+            <div class="detailed-section">
+              <h3>Discussion & Future Work</h3>
+              <p>
+                The study confirms the <b>practicality of AI-driven fault detection</b> for EV charging infrastructure. Compared to manual reporting (e.g., PlugShare user submissions), our models provide <b>structured, real-time, and standardized fault reports</b>. The segmentation model's <b>high IoU score</b> suggests potential for <b>real-world deployment</b>, provided additional calibrations are made.
+              </p>
+              <p>
+                <b>Future improvements</b> include:
+              </p>
+              <ul>
+                <li><b>Expanding dataset diversity:</b> More data from various lighting conditions, weather environments, and charger manufacturers.</li>
+                <li><b>Active learning integration:</b> Allow the model to refine its accuracy continuously by learning from new user-reported faults.</li>
+                <li><b>Mobile app integration:</b> Enhancing real-world applicability by linking AI fault detection with user-friendly reporting tools.</li>
+              </ul>
+              <p>
+                By refining these models further, we aim to <b>optimize EV charger maintenance</b>, reduce <b>charger downtime</b>, and contribute to a <b>seamless EV charging experience</b>.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+  </div>
 
-      <div style="text-align: center; margin-top: 50px;">
-        <h3>Binary Classification:</h3>
-      </div>
+  <script>
+    function toggleDropdown(id) {
+        var element = document.getElementById(id);
+        if (element.style.display === "none") {
+            element.style.display = "block";
+        } else {
+            element.style.display = "none";
+        }
+    }
+  </script>
 
-      
+</section><!-- /Results Section -->
 
-    </section><!-- /Services Section -->
 
     <!-- Portfolio Section -->
     <section id="prototype" class="prototype section">
