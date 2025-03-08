@@ -1751,6 +1751,10 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
+.service-item {
+  text-align: left; /* Ensures text aligns to the left */
+}
+
+.service-item ul {
+  padding-left: 20px; /* Adds indentation to the list */
 }

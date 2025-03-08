@@ -225,38 +225,123 @@
 
     </section><!-- /Stats Section -->
 
+
     <!-- Services Section -->
-    <section id="method" class="services section light-background">
+<section id="method" class="services section light-background">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span>Methodology</span>
-        <h2>Methodology</h2>
-        <p>We first utilizes NVIDIA’s MiT-B0, a transformer for semantic segmentation. The training data is prepared using Segments.ai, a web-based tool that enables precise pixel-level annotation. Each pixel is classified into one of five categories — Background, Body, Plug, Screen, and Cables. The model outputs a pixel-wise segmentation mask, which helps isolate key charger components before the fault detection stage. <br>
-          
-          In the fault detection stage, we train a CNN-based image classification model on the isolated components to predict whether they are faulty. Once trained, the classifier integrates with the segmentation model, enabling real-time fault detection and automated flagging for maintenance.</p>
-      </div><!-- End Section Title -->
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <span>Methodology</span>
+    <h2>Methodology</h2>
+    <p>
+      Our project enhances EV charger reliability by leveraging artificial intelligence to automatically detect and classify charger issues. To achieve this, we use two primary AI methods: <b>Semantic Segmentation</b> and <b>Binary Classification</b>.
+    </p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up">
     
-      <div style="text-align: center; margin-top: 20px;">
-        <h3>Semantic Segmentation:</h3>
-        <p>A predictive result output from our custom segmentation model:</p>
-          <img src="assets/img/segformer_out.png" class="img-fluid" alt="" style="width: 60%; height: auto;">
-            <div style="margin-top: 20px;">
-              <button onclick="toggleDropdown('semantic-details')" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; background-color: #f8f9fa; cursor: pointer; border-radius: 5px;">
-                Learn More
-              </button>
+    <section id="featured-services" class="featured-services section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100" style = "text-align: left;">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-segmented-nav"></i></div>
+              <h4>Semantic Segmentation</h4>
+              <p style="text-align: left;">We first segment the different parts of an EV charger—such as the screen, body, cable, and plug—before analyzing their condition.</p>
+              <ul style="text-align: left;">
+                <li><b>How?</b> We first tested this technique on a sidewalk dataset before eventually upgrading to a more advanced segmentation model, <b>MIT-B3 SegFormer</b>, to our labeled EV charger dataset.</li>
+                <li><b>Why?</b> This helps us focus on specific parts rather than the whole charger, making the classification process easier and more accurate .</li>
+              </ul>
             </div>
-    
-          <div id="semantic-details" style="display: none; margin-top: 10px;">
-              <p>Completed 50 epochs of training, 3550 steps. <br>
-                  Model achieved ~82.8% mean accuracy across classes, 90.9% overall accuracy, and mean IoU of 0.7481 across classes after fine-tuning.
-              </p>
-          </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200" style = "text-align: left;">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-vr"></i></div>
+              <h4>Binary Classification</a></h4>
+              <p style="text-align: left;">Once the charger components are segmented, we train a model to classify whether each part is functioning correctly or broken.</p>
+                <ul style="text-align: left;">
+                  <li><b>How?</b> We collected and labeled images of EV chargers as either "healthy" or "broken" (e.g., damaged screen, faulty plug, disconnected cable, and out of service chargers).</li>
+                  <li><b>What model?</b> We use <b>Vision Transformers (ViT)</b>—a type of AI that analyzes images similarly to how people process visual information.</li>
+                  <li><b>Process:</b> Images are cleaned and standardized, then split into training and testing sets. The model learns from the training data and is tested on new images.</li>
+                </ul>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
       </div>
 
-      <div style="text-align: center; margin-top: 50px;">
-        <h3>Binary Classification:</h3>
+  <script>
+    function toggleDropdown(id) {
+        var element = document.getElementById(id);
+        if (element.style.display === "none") {
+            element.style.display = "block";
+        } else {
+            element.style.display = "none";
+        }
+    }
+  </script>
+<div style="text-align: center; margin-top: 50px;">
+  <button onclick="toggleDropdown('semantic-details')" style="align-items:center; padding: 10px; border: 1px solid #ccc; background-color: #f8f9fa; cursor: pointer; border-radius: 5px; text-align: center;">
+    Expand to Learn More
+  </button>
+  </div>
+          <div id="semantic-details" style="display: none; margin-top: 10px;">
+            <h3 style = "margin-top: 30px;">Semantic Segmentation Model Development</h3>
+            <p style = "margin-top: 30px;">
+              Our approach to EV charger segmentation began with an initial feasibility study using a sidewalk dataset from Hugging Face to test transformer-based semantic segmentation models. We started with the <b>MiT-B0 SegFormer</b>, a lightweight segmentation model with only 3.7 million parameters, to evaluate whether transformers could effectively delineate structured objects in real-world images. The goal was to determine whether this segmentation approach could successfully isolate key charger components such as the screen, body, cable, and plug.
+            </p>
+            <div style = "text-align: center; margin-top: 30px;">
+              <img src = "assets/img/sidewalk_segformer.png" class = "img-fluid" alt = "" style ="width: 60%; height:auto; align-items: center;">
+              <p style = "text-align: center;"> The figure above showcases an example of Segformer performing on sidewalk data. <br>
+                <a href="https://huggingface.co/blog/fine-tune-segformer" target="_blank">Link</a>
+              </p>
+              </div>
+              <p>
+                After validating the approach on the sidewalk dataset, we applied the same <b>MiT-B0 SegFormer</b> model to our custom dataset of EV chargers. The dataset was pre-labeled, containing pixel-wise annotations for each charger component. Initial results demonstrated that while MiT-B0 could segment charger features, it struggled with finer details, particularly in occluded and low-resolution images. 
+              </p>
+              <div style = "text-align: center; margin-top: 30px;">
+                <img src = "assets/img/segformer_arch.png" class = "img-fluid" alt = "" style ="width: 60%; height:auto; align-items: center;">
+                <p style = "text-align: center; margin-top: 30px;"> The figure above represents the SegFormer Architecture.<br>
+                  <a href="https://arxiv.org/abs/2105.05633" target="_blank">Link</a>
+                </p>
+                </div>
+              <p>
+                Recognizing the need for improved segmentation performance, we transitioned to leveraging more powerful compute resources. One of our team members gained access to an <b>NVIDIA A100 GPU</b>, which enabled us to experiment with more complex models in the SegFormer family. We systematically evaluated <b>MiT-B1 through MiT-B5</b>, analyzing their respective parameter sizes, training times, and segmentation accuracy. After extensive testing, we found that the <b>MiT-B3 SegFormer</b> model struck the best balance between computational efficiency and performance, significantly improving segmentation quality without incurring excessive inference costs.
+              </p>
+                <h3 style = "margin-top: 50px;">Binary Classification: Model Training & Testing</h3>
+              <p style = "margin-top: 30px;">
+                After segmenting charger components, we trained a <b>Vision Transformer (ViT)</b> model for fault classification. Using <b>vit-base-patch16-224-in21k</b>, we categorized images into two classes: <b>healthy</b> (label = 0) and <b>broken</b> (label = 1). Dataset preparation involved standardization to RGB format, renaming for consistency, and labeling stored in a <code>screen_metadata.csv</code> file.
+              </p>
+              <p>
+                The dataset was split into an <b>80-20 train-test ratio</b>. Images were transformed using <b>PyTorch's torchvision</b> with preprocessing steps such as <b>RandomResizedCrop, Normalization,</b> and <b>ToTensor</b>. The ViT model was initialized using <code>AutoModelForImageClassification.from_pretrained</code>, with a data collator managing batch and padding operations.
+              </p>
+              <p>
+                Training was conducted via the <b>Hugging Face Trainer API</b> with the following hyperparameters:
+                <ul>
+                  <li><b>Batch size:</b> 2 per device</li>
+                  <li><b>Learning rate:</b> 5e-5</li>
+                  <li><b>Epochs:</b> 10</li>
+                  <li><b>Gradient accumulation:</b> 2 steps</li>
+                  <li><b>Evaluation strategy:</b> Step-based</li>
+                  <li><b>Best model selection:</b> Based on accuracy</li>
+                </ul>
+              </p>
+              <p>
+                After training, the model was uploaded to the <b>Hugging Face Model Hub</b> for deployment. Performance was evaluated using the Hugging Face pipeline on test images outside the training set, generating confidence scores for each classification.
+              </p>
+              </div>
+          </div>
+          <div id="semantic-details" style="display: none; margin-top: 10px;">
+            
+        </div>
       </div>
+
+      
 
       <script>
         function toggleDropdown(id) {
@@ -281,6 +366,30 @@
         <h2>Results</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
+
+      <div style="text-align: center; margin-top: 20px;">
+        <h3>Semantic Segmentation:</h3>
+        <p>A predictive result output from our custom segmentation model:</p>
+          <img src="assets/img/segformer_out.png" class="img-fluid" alt="" style="width: 60%; height: auto;">
+            <div style="margin-top: 20px;">
+              <button onclick="toggleDropdown('semantic-details')" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; background-color: #f8f9fa; cursor: pointer; border-radius: 5px;">
+                Learn More
+              </button>
+            </div>
+    
+          <div id="semantic-details" style="display: none; margin-top: 10px;">
+              <p>Completed 50 epochs of training, 3550 steps. <br>
+                  Model achieved ~82.8% mean accuracy across classes, 90.9% overall accuracy, and mean IoU of 0.7481 across classes after fine-tuning.
+              </p>
+          </div>
+          <div id="semantic-details" style="display: none; margin-top: 10px;">
+            <img src = "assets/img/segformer_arch.png" class = "img-fluid" alt = "" style ="width: 60%; height:auto;">
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 50px;">
+        <h3>Binary Classification:</h3>
+      </div>
 
       
 
@@ -456,7 +565,7 @@
 
       <div class="col-lg-2 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="375">
         <div class="member">
-          <div class="pic"><img src="assets/img/team/ir.png" class="img-fluid" alt=""></div>
+          <div class="pic"><img src="assets/img/team/Irving_troll.png" class="img-fluid" alt=""></div>
           <div class="member-info">
             <h4>Kelly Park</h4>
             <div class="social">
