@@ -291,74 +291,95 @@
         }
     }
   </script>
-<div style="text-align: center; margin-top: 50px;">
-  <button onclick="toggleDropdown('semantic-details')" style="align-items:center; padding: 10px; border: 1px solid #ccc; background-color: #f8f9fa; cursor: pointer; border-radius: 5px; text-align: center;">
-    Expand to Learn More
-  </button>
-  </div>
-          <div id="semantic-details" style="display: none; margin-top: 10px;">
-            <h3 style = "margin-top: 30px;">Semantic Segmentation Model Development</h3>
-            <p style = "margin-top: 30px;">
-              Our approach to EV charger segmentation began with an initial feasibility study using a sidewalk dataset from Hugging Face to test transformer-based semantic segmentation models. We started with the <b>MiT-B0 SegFormer</b>, a lightweight segmentation model with only 3.7 million parameters, to evaluate whether transformers could effectively delineate structured objects in real-world images. The goal was to determine whether this segmentation approach could successfully isolate key charger components such as the screen, body, cable, and plug.
-            </p>
-            <div style = "text-align: center; margin-top: 30px;">
-              <img src = "assets/img/sidewalk_segformer.png" class = "img-fluid" alt = "" style ="width: 60%; height:auto; align-items: center;">
-              <p style = "text-align: center;"> The figure above showcases an example of Segformer performing on sidewalk data. <br>
-                <a href="https://huggingface.co/blog/fine-tune-segformer" target="_blank">Link</a>
-              </p>
-              </div>
-              <p>
-                After validating the approach on the sidewalk dataset, we applied the same <b>MiT-B0 SegFormer</b> model to our custom dataset of EV chargers. The dataset was pre-labeled, containing pixel-wise annotations for each charger component. Initial results demonstrated that while MiT-B0 could segment charger features, it struggled with finer details, particularly in occluded and low-resolution images. 
-              </p>
-              <ul>
-                <li><a href="https://huggingface.co/dskong07/segformer-b0-finetuned-segments-chargers-full-2-23" target="_blank">Hugging Face repository for our initial solidified SegFormer B0 model.</a></li>
-              </ul>
-              <div style = "text-align: center; margin-top: 30px;">
-                <img src = "assets/img/segformer_arch.png" class = "img-fluid" alt = "" style ="width: 60%; height:auto; align-items: center;">
-                <p style = "text-align: center; margin-top: 30px;"> The figure above represents the SegFormer Architecture.<br>
-                  <a href="https://arxiv.org/abs/2105.05633" target="_blank">Link</a>
-                </p>
+
+
+                <div style="text-align: center; margin-top: 50px;">
+                  <button onclick="toggleDropdown('semantic-details')" style="align-items:center; padding: 10px; border: 1px solid #ccc; background-color: #f8f9fa; cursor: pointer; border-radius: 5px; text-align: center;">
+                    Expand to Learn More
+                  </button>
                 </div>
-              <p>
-                Recognizing the need for improved segmentation performance, we transitioned to leveraging more powerful compute resources. One of our team members gained access to an <b>NVIDIA A100 GPU</b>, which enabled us to experiment with more complex models in the SegFormer family. We systematically evaluated <b>MiT-B1 through MiT-B5</b>, analyzing their respective parameter sizes, training times, and segmentation accuracy. After extensive testing, we found that the <b>MiT-B3 SegFormer</b> model struck the best balance between computational efficiency and performance, significantly improving segmentation quality without incurring excessive inference costs.
-              </p>
-              <ul>
-                <li><a href="https://huggingface.co/irvingz/segformer-b3-finetuned-segments-chargers-full-v3.1" target="_blank">Hugging Face repository for our final solidified SegFormer B3 model.</a></li>
-              </ul>
-              <div style = "text-align: center; margin-top: 30px;">
-                <img src = "assets/img/segformer_performance.png" class = "img-fluid" alt = "" style ="width: 40%; height:auto; align-items: center;">
-                <p style = "text-align: center; margin-top: 30px;"> The figure above showcases the performances of B0 to B5 models on an exisiting dataset named ADE20K.<br>
-                  <a href="https://arxiv.org/abs/2105.05633" target="_blank">Link</a>
-                </p>
-                </div>
+                <div id="semantic-details" style="display: none; margin-top: 10px;">
+                  <h3 style="margin-top: 30px;">Semantic Segmentation Model Development</h3>
+                  <p style="margin-top: 30px;">
+                    Our approach to EV charger segmentation began with an initial feasibility study using a sidewalk dataset from Hugging Face to test transformer-based semantic segmentation models. We started with the <b>MiT-B0 SegFormer</b>, a lightweight segmentation model with only 3.7 million parameters, to evaluate whether transformers could effectively delineate structured objects in real-world images. The goal was to determine whether this segmentation approach could successfully isolate key charger components such as the screen, body, cable, and plug.
+                  </p>
+                  <div style="text-align: center; margin-top: 30px;">
+                    <img src="assets/img/sidewalk_segformer.png" class="img-fluid" alt="" style="width: 60%; height:auto; align-items: center;">
+                    <p style="text-align: center;"> The figure above showcases an example of SegFormer performing on sidewalk data. <br>
+                      <a href="https://huggingface.co/blog/fine-tune-segformer" target="_blank">Link</a>
+                    </p>
+                  </div>
+                  <p>
+                    After validating the approach on the sidewalk dataset, we applied the same <b>MiT-B0 SegFormer</b> model to our custom dataset of EV chargers. The dataset was pre-labeled, containing pixel-wise annotations for each charger component. Initial results demonstrated that while MiT-B0 could segment charger features, it struggled with finer details, particularly in occluded and low-resolution images.
+                  </p>
+                  <ul>
+                    <li><a href="https://huggingface.co/dskong07/segformer-b0-finetuned-segments-chargers-full-2-23" target="_blank">Hugging Face repository for our initial solidified SegFormer B0 model.</a></li>
+                  </ul>
+                  <div style="text-align: center; margin-top: 30px;">
+                    <img src="assets/img/segformer_arch.png" class="img-fluid" alt="" style="width: 60%; height:auto; align-items: center;">
+                    <p style="text-align: center; margin-top: 30px;"> The figure above represents the SegFormer Architecture.<br>
+                      <a href="https://arxiv.org/abs/2105.05633" target="_blank">Link</a>
+                    </p>
+                  </div>
+                  <p>
+                    For dataset training, the collected images were randomly shuffled and split into <b>80% training and 20% testing</b> subsets using <code>train_test_split()</code>. The model leveraged a <b>learning rate of 0.00006</b>, a <b>batch size of 2</b>, and <b>50 training epochs</b>. Data augmentation was applied using <b>ColorJitter</b>, which adjusted brightness, contrast, saturation, and hue to enhance model generalization. 
+                  </p>
+                  <p>
+                    The images and their corresponding labels were preprocessed using <b>Hugging Face’s SegformerImageProcessor</b>, which resized and normalized the inputs before training. Training was conducted using the <b>Hugging Face Trainer API</b>, and the model was initialized with <code>SegformerForSemanticSegmentation.from_pretrained("nvidia/mit-b1")</code>. Performance was monitored via <b>Intersection over Union (IoU) and accuracy metrics</b>, computed using the <b>evaluate</b> library. The model’s predictions were interpolated using bilinear scaling, and performance was assessed per category to ensure accurate segmentation across all charger components.
+                  </p>
+                  <p>
+                    Recognizing the need for improved segmentation performance, we transitioned to leveraging more powerful compute resources. One of our team members gained access to an <b>NVIDIA A100 GPU</b>, which enabled us to experiment with more complex models in the SegFormer family. We systematically evaluated <b>MiT-B1 through MiT-B5</b>, analyzing their respective parameter sizes, training times, and segmentation accuracy. After extensive testing, we found that the <b>MiT-B3 SegFormer</b> model struck the best balance between computational efficiency and performance, significantly improving segmentation quality without incurring excessive inference costs.
+                  </p>
+                  <p>
+                    The best-performing model (<b>MIT-B3</b>) was automatically saved and uploaded to the <b>Hugging Face Model Hub</b> for future deployment. To evaluate segmentation accuracy, we applied a custom <b>color palette</b> to differentiate segmented components: red for screens, green for plugs, yellow for the body, blue for cords, and purple for the background. 
+                  </p>
+                  <ul>
+                    <li><a href="https://huggingface.co/irvingz/segformer-b3-finetuned-segments-chargers-full-v3.1" target="_blank">Hugging Face repository for our final solidified SegFormer B3 model.</a></li>
+                  </ul>
+                  <div style="text-align: center; margin-top: 30px;">
+                    <img src="assets/img/segformer_performance.png" class="img-fluid" alt="" style="width: 40%; height:auto; align-items: center;">
+                    <p style="text-align: center; margin-top: 30px;"> The figure above showcases the performances of B0 to B5 models on an existing dataset named ADE20K.<br>
+                      <a href="https://arxiv.org/abs/2105.05633" target="_blank">Link</a>
+                    </p>
+                  </div>
+
 
                 <h3 style = "margin-top: 50px;">Binary Classification: Model Training & Testing</h3>
-              <p style = "margin-top: 30px;">
-                After segmenting charger components, we trained a <b>Vision Transformer (ViT)</b> model for fault classification. Using <b>vit-base-patch16-224-in21k</b>, we categorized images into two classes: <b>healthy</b> (label = 0) and <b>broken</b> (label = 1). Dataset preparation involved standardization to RGB format, renaming for consistency, and labeling stored in a <code>metadata.csv</code> file.
-              </p>
-              <p>
-                The dataset was split into an <b>80-20 train-test ratio</b>. Images were transformed using <b>PyTorch's torchvision</b> with preprocessing steps such as <b>RandomResizedCrop, Normalization,</b> and <b>ToTensor</b>. The ViT model was initialized using <code>AutoModelForImageClassification.from_pretrained</code>, with a data collator managing batch and padding operations.
-              </p>
-              <p>
-                Training was conducted via the <b>Hugging Face Trainer API</b> with the following hyperparameters:
+                <p style = "margin-top: 30px;">
+                  After segmenting charger components, we trained a <b>Vision Transformer (ViT)</b> model for fault classification. Using <b>vit-base-patch16-224-in21k</b>, we categorized images into two classes: <b>healthy</b> (label = 0) and <b>broken</b> (label = 1). Dataset preparation involved standardization to RGB format, renaming for consistency, and labeling stored in a <code>metadata.csv</code> file.
+                </p>
+                <p>
+                  Vision Transformers operate differently from traditional convolutional architectures by using self-attention mechanisms to process image patches. This approach enables the model to capture long-range dependencies within an image. Below is a graphical representation of how Vision Transformers work on the ImageNet dataset, demonstrating superior performance compared to conventional CNN-based models.
+                </p>
+                <div style = "text-align: center; margin-top: 30px;">
+                  <img src = "assets/img/ViTDiagram.png" class = "img-fluid" alt = "" style ="width: 60%; height:auto; align-items: center;">
+                  <p style = "text-align: center; margin-top: 10px;">The figure above represents the Vision Transformer Architecture.<br>
+                    <a href="https://arxiv.org/abs/2010.11929" target="_blank">Link</a>
+                  </p>
+                </div>
+                <p>
+                  The dataset was split into an <b>80-20 train-test ratio</b>. Images were transformed using <b>PyTorch's torchvision</b> with preprocessing steps such as <b>RandomResizedCrop, Normalization,</b> and <b>ToTensor</b>. The ViT model was initialized using <code>AutoModelForImageClassification.from_pretrained</code>, with a data collator managing batch and padding operations. 
+                </p>
+                <p>
+                  Training was conducted via the <b>Hugging Face Trainer API</b> with the following hyperparameters:
+                  <ul>
+                    <li><b>Batch size:</b> 2 per device</li>
+                    <li><b>Learning rate:</b> 5e-5</li>
+                    <li><b>Epochs:</b> 10</li>
+                    <li><b>Gradient accumulation:</b> 2 steps</li>
+                    <li><b>Evaluation strategy:</b> Step-based</li>
+                    <li><b>Best model selection:</b> Based on accuracy</li>
+                  </ul>
+                </p>
+                <p>
+                  The training process handled gradient updates, loss calculations, and backpropagation. Upon completion, the best-performing model was automatically saved and uploaded to the <b>Hugging Face Model Hub</b> for future deployment and fine-tuning.
+                </p>
                 <ul>
-                  <li><b>Batch size:</b> 2 per device</li>
-                  <li><b>Learning rate:</b> 5e-5</li>
-                  <li><b>Epochs:</b> 10</li>
-                  <li><b>Gradient accumulation:</b> 2 steps</li>
-                  <li><b>Evaluation strategy:</b> Step-based</li>
-                  <li><b>Best model selection:</b> Based on accuracy</li>
-                </ul>
-              </p>
-              <p>
-                After training, the model was uploaded to the <b>Hugging Face Model Hub</b> for deployment. Performance was evaluated using the Hugging Face pipeline on test images outside the training set, generating confidence scores for each classification.
-              </p>
-              <ul>
-                <li><a href="https://huggingface.co/dskong07/screen-classif-model" target="_blank">Hugging Face repository for screen classification.</a></li>
-                <li><a href="https://huggingface.co/dskong07/plug-classif-model" target="_blank">Hugging Face repository for plug classification.</a></li>
-                <li><a href="https://huggingface.co/dskong07/cord-classif-model" target="_blank">Hugging Face repository for cord classification.</a></li>
-                <li><a href="https://huggingface.co/dskong07/charger-classif-model" target="_blank">Hugging Face repository for out of service classification.</a></li>
-              </ul>
+                  <li><a href="https://huggingface.co/dskong07/screen-classif-model" target="_blank">Hugging Face repository for screen classification.</a></li>
+                  <li><a href="https://huggingface.co/dskong07/plug-classif-model" target="_blank">Hugging Face repository for plug classification.</a></li>
+                  <li><a href="https://huggingface.co/dskong07/cord-classif-model" target="_blank">Hugging Face repository for cord classification.</a></li>
+                  <li><a href="https://huggingface.co/dskong07/charger-classif-model" target="_blank">Hugging Face repository for out of service classification.</a></li>
+                </ul>                
               </div>
           </div>
             
