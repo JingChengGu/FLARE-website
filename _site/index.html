@@ -310,6 +310,9 @@
               <p>
                 After validating the approach on the sidewalk dataset, we applied the same <b>MiT-B0 SegFormer</b> model to our custom dataset of EV chargers. The dataset was pre-labeled, containing pixel-wise annotations for each charger component. Initial results demonstrated that while MiT-B0 could segment charger features, it struggled with finer details, particularly in occluded and low-resolution images. 
               </p>
+              <ul>
+                <li><a href="https://huggingface.co/dskong07/segformer-b0-finetuned-segments-chargers-full-2-23" target="_blank">Hugging Face repository for our initial solidified SegFormer B0 model.</a></li>
+              </ul>
               <div style = "text-align: center; margin-top: 30px;">
                 <img src = "assets/img/segformer_arch.png" class = "img-fluid" alt = "" style ="width: 60%; height:auto; align-items: center;">
                 <p style = "text-align: center; margin-top: 30px;"> The figure above represents the SegFormer Architecture.<br>
@@ -319,6 +322,9 @@
               <p>
                 Recognizing the need for improved segmentation performance, we transitioned to leveraging more powerful compute resources. One of our team members gained access to an <b>NVIDIA A100 GPU</b>, which enabled us to experiment with more complex models in the SegFormer family. We systematically evaluated <b>MiT-B1 through MiT-B5</b>, analyzing their respective parameter sizes, training times, and segmentation accuracy. After extensive testing, we found that the <b>MiT-B3 SegFormer</b> model struck the best balance between computational efficiency and performance, significantly improving segmentation quality without incurring excessive inference costs.
               </p>
+              <ul>
+                <li><a href="https://ominous-space-giggle-55ggg4vw5w6cvq96.github.dev/" target="_blank">Hugging Face repository for our final solidified SegFormer B3 model.</a></li>
+              </ul>
               <div style = "text-align: center; margin-top: 30px;">
                 <img src = "assets/img/segformer_performance.png" class = "img-fluid" alt = "" style ="width: 40%; height:auto; align-items: center;">
                 <p style = "text-align: center; margin-top: 30px;"> The figure above showcases the performances of B0 to B5 models on an exisiting dataset named ADE20K.<br>
@@ -347,9 +353,14 @@
               <p>
                 After training, the model was uploaded to the <b>Hugging Face Model Hub</b> for deployment. Performance was evaluated using the Hugging Face pipeline on test images outside the training set, generating confidence scores for each classification.
               </p>
+              <ul>
+                <li><a href="https://huggingface.co/dskong07/screen-classif-model" target="_blank">Hugging Face repository for screen classification.</a></li>
+                <li><a href="https://huggingface.co/dskong07/plug-classif-model" target="_blank">Hugging Face repository for plug classification.</a></li>
+                <li><a href="https://huggingface.co/dskong07/cord-classif-model" target="_blank">Hugging Face repository for cord classification.</a></li>
+                <li><a href="https://huggingface.co/dskong07/charger-classif-model" target="_blank">Hugging Face repository for charger classification.</a></li>
+              </ul>
               </div>
           </div>
-          <div id="semantic-details" style="display: none; margin-top: 10px;">
             
         </div>
       </div>
