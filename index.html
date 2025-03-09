@@ -66,7 +66,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="https://github.com/dskong07/FLARE_ev_infra"><i class="bi bi-github"></i></a>
+      <a class="btn-getstarted" href="https://github.com/JingChengGu/FLARE-website/"><i class="bi bi-github"></i></a>
 
     </div>
   </header>
@@ -320,14 +320,14 @@
               </p>
               <div style = "text-align: center; margin-top: 30px;">
                 <img src = "assets/img/segformer_performance.png" class = "img-fluid" alt = "" style ="width: 40%; height:auto; align-items: center;">
-                <p style = "text-align: center; margin-top: 30px;"> The figure above showcases the performances of B0 to B5 models an exisiting dataset named ADE20K.<br>
+                <p style = "text-align: center; margin-top: 30px;"> The figure above showcases the performances of B0 to B5 models on an exisiting dataset named ADE20K.<br>
                   <a href="https://arxiv.org/abs/2105.05633" target="_blank">Link</a>
                 </p>
                 </div>
 
                 <h3 style = "margin-top: 50px;">Binary Classification: Model Training & Testing</h3>
               <p style = "margin-top: 30px;">
-                After segmenting charger components, we trained a <b>Vision Transformer (ViT)</b> model for fault classification. Using <b>vit-base-patch16-224-in21k</b>, we categorized images into two classes: <b>healthy</b> (label = 0) and <b>broken</b> (label = 1). Dataset preparation involved standardization to RGB format, renaming for consistency, and labeling stored in a <code>screen_metadata.csv</code> file.
+                After segmenting charger components, we trained a <b>Vision Transformer (ViT)</b> model for fault classification. Using <b>vit-base-patch16-224-in21k</b>, we categorized images into two classes: <b>healthy</b> (label = 0) and <b>broken</b> (label = 1). Dataset preparation involved standardization to RGB format, renaming for consistency, and labeling stored in a <code>metadata.csv</code> file.
               </p>
               <p>
                 The dataset was split into an <b>80-20 train-test ratio</b>. Images were transformed using <b>PyTorch's torchvision</b> with preprocessing steps such as <b>RandomResizedCrop, Normalization,</b> and <b>ToTensor</b>. The ViT model was initialized using <code>AutoModelForImageClassification.from_pretrained</code>, with a data collator managing batch and padding operations.
@@ -568,7 +568,7 @@
               <div class="member-info">
                 <h4>Irving Zhao</h4>
                 <div class="social">
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href="https://www.linkedin.com/in/zixuan-irving-zhao-764a121b5/"><i class="bi bi-linkedin"></i></a>
                   <a href="https://github.com/zzirving"><i class="bi bi-github"></i></a>
                 </div>
               </div>
