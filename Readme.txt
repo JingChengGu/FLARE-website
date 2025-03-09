@@ -1,1 +1,1 @@
-This is team B15-01's FLARE website repository.
+This is team B15-01's website repository.
